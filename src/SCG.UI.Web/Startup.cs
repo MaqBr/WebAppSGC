@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using SCG.UI.Web.Data;
 using SCG.UI.Web.Models;
 using SCG.UI.Web.Services;
+using SGC.Infrastructure.Data;
 
 namespace SCG.UI.Web
 {
@@ -32,6 +33,9 @@ namespace SCG.UI.Web
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
+
+            services.AddDbContext<ClienteContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
