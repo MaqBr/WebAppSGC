@@ -11,9 +11,10 @@ using System;
 namespace SGC.Infrastructure.Migrations
 {
     [DbContext(typeof(ClienteContext))]
-    partial class ClienteContextModelSnapshot : ModelSnapshot
+    [Migration("20180322000523_AdicionaClasseContato")]
+    partial class AdicionaClasseContato
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,13 +26,9 @@ namespace SGC.Infrastructure.Migrations
                     b.Property<int>("ClienteId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("CPF")
-                        .IsRequired()
-                        .HasColumnType("varchar(11)");
+                    b.Property<string>("CPF");
 
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasColumnType("varchar(200)");
+                    b.Property<string>("Nome");
 
                     b.HasKey("ClienteId");
 
@@ -45,16 +42,11 @@ namespace SGC.Infrastructure.Migrations
 
                     b.Property<int>("ClienteId");
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("varchar(100)");
+                    b.Property<string>("Email");
 
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasColumnType("varchar(200)");
+                    b.Property<string>("Nome");
 
-                    b.Property<string>("Telefone")
-                        .HasColumnType("varchar(15)");
+                    b.Property<string>("Telefone");
 
                     b.HasKey("ContatoId");
 
